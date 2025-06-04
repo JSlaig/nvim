@@ -44,7 +44,8 @@ mapper("x", "<c-k>", ":m '<-2<cr>gv=gv")
 
 -- Command to quickly enter replace mode
 -- SIDENOTE: Use "I" after the replace in order to be case-sensitive
-mapper("n", "<leader>/r", ":%s/")
+mapper("n", "<leader>c/r", ":%s/\\<<C-r><C-w>\\>//Ig<left><left><left>")
+mapper("n", "<Leader>/r", ":%s//Ig<left><left><left>")
 
 -- Command to auto-indent whole file
 mapper("n", "<leader>fw", ":<C-u>normal gg=G``<CR>")
