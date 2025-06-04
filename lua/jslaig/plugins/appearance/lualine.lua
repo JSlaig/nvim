@@ -1,6 +1,6 @@
 return {
     'nvim-lualine/lualine.nvim', -- Status line
-    event = "VimEnter",
+    event = "BufEnter",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     setup = function()
         -- Any setup code can go here if needed
