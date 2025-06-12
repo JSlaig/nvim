@@ -1,7 +1,7 @@
 --TODO: review useful keymaps and functions from plugin, remove unnecessary
 return {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    lazy = true,
+    event = "VeryLazy",
     config = function()
         require("nvim-treesitter.configs").setup({
             textobjects = {
@@ -36,30 +36,30 @@ return {
                     set_jumps = true,
                     goto_next_start = {
                         ["]f"] = { query = "@function.outer", desc = "Next function def start" },
-                        ["]c"] = { query = "@class.outer", desc = "Next class def start" },
-                        ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
-                        ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+                        -- ["]c"] = { query = "@class.outer", desc = "Next class def start" },
+                        -- ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+                        -- ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
                     },
                     goto_next_end = {
                         ["]F"] = { query = "@function.outer", desc = "Next function def start" },
-                        ["]C"] = { query = "@class.outer", desc = "Next class def start" },
-                        ["]I"] = { query = "@conditional.outer", desc = "Next conditional start" },
-                        ["]L"] = { query = "@loop.outer", desc = "Next loop start" },
+                        -- ["]C"] = { query = "@class.outer", desc = "Next class def start" },
+                        -- ["]I"] = { query = "@conditional.outer", desc = "Next conditional start" },
+                        -- ["]L"] = { query = "@loop.outer", desc = "Next loop start" },
                     },
                     goto_previous_start = {
                         ["[f"] = { query = "@function.outer", desc = "Next function def start" },
-                        ["[c"] = { query = "@class.outer", desc = "Next class def start" },
-                        ["[i"] = { query = "@conditional.outer", desc = "Next conditional start" },
-                        ["[l"] = { query = "@loop.outer", desc = "Next loop start" },
+                        -- ["[c"] = { query = "@class.outer", desc = "Next class def start" },
+                        -- ["[i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+                        -- ["[l"] = { query = "@loop.outer", desc = "Next loop start" },
                     },
                 },
             },
         })
 
 
-        local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+        -- local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
-        vim.keymap.set({"n", "x", "o"}, ";", ts_repeat_move.repeat_last_move)
-        vim.keymap.set({"n", "x", "o"}, ",", ts_repeat_move.repeat_last_move_opposite)
+        -- vim.keymap.set({"n", "x", "o"}, ";", ts_repeat_move.repeat_last_move)
+        -- vim.keymap.set({"n", "x", "o"}, ",", ts_repeat_move.repeat_last_move_opposite)
     end,
 }

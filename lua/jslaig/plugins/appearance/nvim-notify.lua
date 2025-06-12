@@ -1,9 +1,11 @@
 return {
 	"rcarriga/nvim-notify", -- Better notifications
-	event = "VimEnter",
+	event = "UIEnter",
 	config = function()
-		require("notify").setup({
-			background_colour = "#000000",
-		})
+        vim.defer_fn(function()
+            require("notify").setup({
+                background_colour = "#000000",
+            })
+        end, 100)
 	end,
 }

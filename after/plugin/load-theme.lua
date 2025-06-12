@@ -16,7 +16,7 @@ function remove_bg(color)
 
   -- Check if the colorscheme exists
   if not colorscheme_exists(color) then
-    require("notify")("Colorscheme '" .. color .. "' not found or installed. Falling back to '" .. hard_color .. "'", "warn")
+    -- require("notify")("Colorscheme '" .. color .. "' not found or installed. Falling back to '" .. hard_color .. "'", "warn")
     color = hard_color
   end
 
@@ -25,7 +25,7 @@ function remove_bg(color)
   vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
   vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})
 
-  require("notify")("Colorscheme loaded: " .. color, "info") 
+  -- require("notify")("Colorscheme loaded: " .. color, "info") 
 end
 
 -- ############################################################################
