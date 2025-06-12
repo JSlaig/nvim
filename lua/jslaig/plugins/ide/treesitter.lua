@@ -1,9 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "BufReadPost",
+    event = "InsertEnter",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        event = "InsertEnter"
     },
     config = function()
         local treesitter = require("nvim-treesitter.configs")

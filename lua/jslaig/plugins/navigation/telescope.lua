@@ -6,7 +6,7 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
   },
-  event = "UIEnter",
+  event = "VeryLazy",
   config = function()
     vim.defer_fn(function()
         local telescope = require("telescope") 
