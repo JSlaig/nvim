@@ -1,6 +1,7 @@
 return {
     "glepnir/dashboard-nvim",
     event = "VimEnter",
+    lazy = false,
     priority = 1000,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -67,7 +68,9 @@ return {
                         key = "g",
                     },
                 },
-            },
+            }
         })
+
+        vim.cmd("redraw")
     end,
 }

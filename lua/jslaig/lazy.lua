@@ -1,5 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+local uv = vim.uv or vim.loop
+
+if not uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -12,11 +14,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- { import = "jslaig.plugins" }, -- Uncategorized plugins
+    { import = "jslaig.plugins.dashboard" }, -- Force loading of the dashboard to make sure it is not delayed
     { import = "jslaig.plugins.appearance" }, -- Plugins that manage dialogs, colors, etc
     { import = "jslaig.plugins.navigation" }, -- Plugins to ease navigation in and between files
     { import = "jslaig.plugins.tools" }, -- Additional tools
     { import = "jslaig.plugins.ide" }, -- Syntax and workspace aware plugins for references, linting, syntax highlighting, etc
+
+    -- { import = "jslaig.plugins" }, -- Uncategorized plugins
+},{
     checker = {
         enabled = true,
         notify = false,
