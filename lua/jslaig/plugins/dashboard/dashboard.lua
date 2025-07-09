@@ -70,7 +70,5 @@ return {
                 },
             }
         })
-
-        vim.cmd("redraw")
     end,
 }
