@@ -30,10 +30,5 @@ return {
                 lint.try_lint()
             end,
         })       
-
-
-        -- vim.keymap.set("n", "<leader>lt", function()
-        --     lint.try_lint()
-        -- end)
     end
 }
