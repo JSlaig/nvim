@@ -29,9 +29,9 @@ return {
         local keymap = vim.keymap
 
         --set keymaps
-        keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", {desc = "Fuzzy find files in cwd"})
-        keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", {desc = "Find string in cwd"})
-        keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", {desc = "Find string under cursor"})
+        -- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", {desc = "Fuzzy find files in cwd"})
+        -- keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", {desc = "Find string in cwd"})
+        -- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", {desc = "Find string under cursor"})
     end, 150)
   end
 }
