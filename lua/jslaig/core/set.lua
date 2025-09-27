@@ -10,7 +10,7 @@ o.clipboard = "unnamedplus"
 
 o.splitright = true
 o.hidden = true
-o.lazyredraw = true
+o.lazyredraw = false
 o.expandtab = true
 
 opt.tabstop = 4
@@ -19,7 +19,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 
 o.shell = "pwsh"
-o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command'
+o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
 
 opt.smartindent = true
 
@@ -47,5 +47,3 @@ opt.isfname:append("@-@")
 opt.updatetime = 50
 
 opt.colorcolumn = "80"
-
-
