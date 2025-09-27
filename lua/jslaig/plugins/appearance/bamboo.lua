@@ -5,5 +5,5 @@ return {
 	config = function()
 		require("bamboo").setup({})
 		require("bamboo").load()
-	end,
+	end
 }
