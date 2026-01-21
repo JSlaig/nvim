@@ -8,7 +8,7 @@ return {
         vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
 
         -- Live grep
-        vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
+        -- vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
 
         -- Grep word under cursor
         vim.keymap.set("n", "<leader>fc", fzf.grep_cword, { desc = "Grep word under cursor" })
