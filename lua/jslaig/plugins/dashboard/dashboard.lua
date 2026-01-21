@@ -8,6 +8,14 @@ return {
 
         local art = {
             '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
             '             .         .                                                                                   ',
             '           .:::        ::.                                                                                 ',
             '         .::::::       ::::.                                               .:::                            ',
@@ -24,48 +32,60 @@ return {
             '          :::       ·::::::                                                                                ',
             '           ::        ·::·´                                                                                 ',
             '            `         ´                                                                                    ',
-            '                                                                                                            '
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           ',
+            '                                                                                                           '
         }
 
         require("dashboard").setup({
             -- config
-            theme = "hyper",
+            theme = "doom",
             disable_move = true,
             config = {
                 -- header = header_art, 
                 header = art, 
-                shortcut = { 
+                center = {
                     {
                         icon = " ",
                         icon_hl = "@variable",
-                        desc = "Files",
-                        group = "Label",
-                        action = ":Telescope find_files",
+                        desc = "Find Files",
+                        desc_hl = "Label",
                         key = "f",
+                        key_hl = "Number",
+                        action = "Telescope find_files",
+                    },
+                    {
+                        icon = " ",
+                        icon_hl = "@variable",
+                        desc = "Grep Files",
+                        desc_hl = "Label",
+                        key = "g",
+                        key_hl = "Number",
+                        action = "Telescope live_grep",
+                    },
+                    {
+                        icon = " ",
+                        icon_hl = "@variable",
+                        desc = "Quickfix List",
+                        desc_hl = "Label",
+                        key = "q",
+                        key_hl = "Number",
+                        action = "copen",
                     },
                     {
                         icon = "󰢱 ",
                         icon_hl = "@variable",
                         desc = "Plugins",
-                        group = "Label",
-                        action = ":Lazy",
+                        desc_hl = "Label",
                         key = "p",
-                    },
-                    {
-                        icon = " ",
-                        icon_hl = "@variable",
-                        desc = "Mason",
-                        group = "Label",
-                        action = ":Mason",
-                        key = "m",
-                    },
-                    {
-                        icon = " ",
-                        icon_hl = "@variable",
-                        desc = "Game",
-                        group = "Label",
-                        action = ":VimBeGood",
-                        key = "g",
+                        key_hl = "Number",
+                        action = "Lazy",
                     },
                 },
             }
