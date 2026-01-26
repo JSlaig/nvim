@@ -1,18 +1,24 @@
 return {
-  'neovim/nvim-lspconfig',
+  "neovim/nvim-lspconfig",
   config = function()
-    local lspconfig = require("lspconfig")
-
-    -- Get the path where Mason installed jdtls
+    -- Mason jdtls path
     local mason_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
     local jdtls_cmd = {
-      mason_path .. "/bin/jdtls",  -- path to jdtls executable
+      mason_path .. "/bin/jdtls",
     }
 
-    -- Configure jdtls
-    lspconfig.jdtls.setup({
+    -- Root detection (lspconfig.util replacement)
+    local root_pattern = vim.fs.root(0, {
+      ".git",
+      "mvnw",
+      "gradlew",
+      "pom.xml",
+      "build.gradle",
+    })
+
+    vim.lsp.config("jdtls", {
       cmd = jdtls_cmd,
-      root_dir = lspconfig.util.root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle"),
+      root_dir = root_pattern,
       settings = {
         java = {
           signatureHelp = { enabled = true },
@@ -20,18 +26,18 @@ return {
           completion = { favoriteStaticMembers = {} },
         },
       },
-      on_attach = function(client, bufnr)
-        -- Optional: setup buffer-local keymaps
-        local buf_map = function(mode, lhs, rhs, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, lhs, rhs, opts)
+      on_attach = function(_, bufnr)
+        local map = function(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
         end
 
-        buf_map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-        buf_map("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
-        buf_map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+        map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+        map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+        map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
       end,
     })
+
+    vim.lsp.enable("jdtls")
   end,
 }
+
