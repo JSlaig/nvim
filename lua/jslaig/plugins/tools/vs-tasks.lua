@@ -4,34 +4,50 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
-        "nvim-telescope/telescope.nvim",
+        "folke/snacks.nvim"
     },
     keys = {
-        {"<leader>bt", ":lua require('telescope').extensions.vstask.tasks()<CR>"}
+        {"<leader>bt", ":lua require('vstask').tasks()<CR>"}
+    },
+    opts = {
+        picker = "snacks"
     },
     config = function()
         require("vstask").setup({
-            cache_json_conf = false, -- don't read the json conf every time a task is ran
-            cache_strategy = "last", -- can be "most" or "last" (most used / last used)
-            config_dir = ".vscode", -- directory to look for tasks.json and launch.json
-            use_harpoon = true, -- Need this in order for terms to appear in buffers and be able to retrieve them
-            telescope_keys = { -- change the telescope bindings used to launch tasks
-                tab = '<CR>',
-                -- current = '<CR>',
-            },
-            autodetect = { -- auto load scripts
-                npm = "off"
-            },
-            terminal = 'custom',
+            picker = "snacks", -- Use snacks.nvim picker
+            cache_json_conf = true,
+            cache_strategy = "last",
+            config_dir = ".vscode",
+            support_code_workspace = true,
+            terminal = 'nvim',
             term_opts = {
-                cmd = function(task)
-                    return 'lua require("terminal.mappings").run() "' .. task.name .. '")'
-                end,
+                vertical = {
+                    direction = "vertical",
+                    size = "80"
+                },
+                horizontal = {
+                    direction = "horizontal",
+                    size = "10"
+                },
+                current = {
+                    direction = "float",
+                },
+                tab = {
+                    direction = 'tab',
+                }
             },
-            tab = {
-                direction = 'tab',
-            }
-        })
-    end
+            -- Note: telescope_keys still work for key mappings even with snacks picker
+            telescope_keys = {
+                vertical = '<C-v>',
+                split = '<C-p>',
+                tab = '<C-t>',
+                current = '<CR>',
+                background = '<C-b>',
+                watch_job = '<C-w>',
+                kill_job = '<C-d>',
+                run = '<C-r>',
+            },
+            -- ... other configuration options work the same
+        })    end
 }
 

@@ -18,8 +18,11 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 
+-- Set PowerShell 7 as shell for :terminal and tasks
 o.shell = "pwsh"
-o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -NoExit -Command"
+o.shellquote = ""
+o.shellxquote = ""
 
 opt.smartindent = true
 
