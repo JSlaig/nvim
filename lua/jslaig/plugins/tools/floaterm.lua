@@ -1,5 +1,5 @@
 return {
-    "nvzone/floaterm",
+    "jslaig/floaterm",
     dependencies = "nvzone/volt",
     opts = {
         border = true

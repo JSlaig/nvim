@@ -1,6 +1,6 @@
 --TODO: see if I can tweak it to integrate better
 return {
-    "EthanJWright/vs-tasks.nvim",
+    "jslaig/vs-tasks.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -19,7 +19,7 @@ return {
             cache_strategy = "last",
             config_dir = ".vscode",
             support_code_workspace = true,
-            terminal = 'nvim',
+            terminal = 'floaterm',
             term_opts = {
                 vertical = {
                     direction = "vertical",
