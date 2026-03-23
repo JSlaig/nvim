@@ -1,6 +1,7 @@
 return {
     "jslaig/floaterm",
     dependencies = "nvzone/volt",
+    event = "VeryLazy",
     opts = {
         border = true
     },
