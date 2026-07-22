@@ -14,7 +14,7 @@ return {
 
         lint.linters_by_ft = {
             javascript = { "oxlint" },
-            java = { "checkstyle" },
+            -- java = { "checkstyle" },
             scss = { "stylelint" },
             css = { "eslint_d" },
             html = { "eslint_d" },

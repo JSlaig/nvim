@@ -7,6 +7,10 @@ return {
         { '<leader>fg', ':Seeker grep<CR>', desc = 'Seek Grep' },
         { '<leader>fw', ':Seeker grep_word<CR>', desc = 'Seek Grep Word' },
     },
-    opts = { }, -- Required unless you call seeker.setup() manually, add your configs here
+    opts = {
+        picker_opts = {
+            smartcase = true,
+        }
+    }, -- Required unless you call seeker.setup() manually, add your configs here
 }
 
