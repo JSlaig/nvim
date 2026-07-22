@@ -13,12 +13,12 @@ return {
         })
 
         lint.linters_by_ft = {
-            javascript = { "eslint_d" },
-            -- java = { "" },
+            javascript = { "oxlint" },
+            java = { "checkstyle" },
             scss = { "stylelint" },
             css = { "eslint_d" },
             html = { "eslint_d" },
-            json = { "eslint_d" },
+            json = { "jsonlint" },
             lua = { "selene" },
         }
 

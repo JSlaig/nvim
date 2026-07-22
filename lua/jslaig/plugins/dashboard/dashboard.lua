@@ -58,7 +58,7 @@ return {
                         desc_hl = "Label",
                         key = "f",
                         key_hl = "Number",
-                        action = "Telescope find_files",
+                        action = "Seeker files",
                     },
                     {
                         icon = " ",
@@ -67,7 +67,7 @@ return {
                         desc_hl = "Label",
                         key = "g",
                         key_hl = "Number",
-                        action = "Telescope live_grep",
+                        action = "Seeker grep",
                     },
                     {
                         icon = " ",

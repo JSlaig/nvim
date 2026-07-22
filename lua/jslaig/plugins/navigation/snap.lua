@@ -16,9 +16,9 @@ return {
 
       snap.maps({
         -- find files: <leader>ff
-        { "<leader>ff", files },
+        -- { "<leader>ff", files },
         -- live grep: <leader>fg
-        { "<leader>fg", vimgrep },
+        -- { "<leader>fg", vimgrep },
 
         -- buffer search, oldfiles, etc:
         { "<leader>fb", snap.config.file { producer = "vim.buffer" } },

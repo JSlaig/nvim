@@ -8,6 +8,6 @@ return {
     cmd = "FloatermToggle",
     keys = {
         -- Toggle floating terminal with <leader>`
-        { "<C-\\>", "<cmd>FloatermToggle<CR>", mode = { "n", "i", "t" }, desc = "Toggle floating terminal" }
+        { "<C-\\>", "<cmd>FloatermToggle<CR>", mode = { "n", "i", "v", "t" }, desc = "Toggle floating terminal" }
     }
 }          
