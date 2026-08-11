@@ -1,29 +1,53 @@
 return {
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
-        -- Mason jdtls path
-        local mason_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
-        local jdtls_cmd = {
-            mason_path .. "/bin/jdtls",
-        }
+        -- Diagnostics display config
+        vim.opt.updatetime = 300
 
-        -- Root detection (lspconfig.util replacement)
+        vim.diagnostic.config({
+            virtual_text = true,
+            signs = true,
+            underline = true,
+            severity_sort = true,
+
+            float = {
+                border = "rounded",
+                source = "always",
+            },
+        })
+
+        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {
+            desc = "Show diagnostic",
+        })
+
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = function()
+                vim.diagnostic.open_float(nil, {
+                    focus = false,
+                    scope = "cursor",
+                })
+            end,
+        })
+
+        -- Java LSP (jdtls) setup
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+        -- Root detection
         local root_pattern = vim.fs.root(
             vim.fn.expand("%:p"),
             { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
         )
 
         local workspace_folder = vim.fn.stdpath("data") ..
-        "/jdtls-workspace/" ..
-        vim.fn.fnamemodify(root_dir, ":p:h:t")
+            "/jdtls-workspace/" ..
+            vim.fn.fnamemodify(root_pattern or vim.fn.getcwd(), ":p:h:t")
 
         local jdtls_cmd = {
-            mason_path .. "/bin/jdtls",
+            vim.fn.stdpath("data") .. "/mason/packages/jdtls/bin/jdtls",
             "-data", workspace_folder,
         }
-
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         vim.lsp.config("jdtls", {
             cmd = jdtls_cmd,
@@ -42,12 +66,9 @@ return {
                 end
 
                 map("n", "gd", vim.lsp.buf.definition, "Go to definition")
-                -- map("n", "K", vim.lsp.buf.hover, "Hover documentation")
-                -- map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
             end,
         })
 
         vim.lsp.enable("jdtls")
     end,
 }
-

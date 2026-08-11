@@ -1,6 +1,8 @@
 --TODO: review useful keymaps and functions from plugin, remove unnecessary
 return {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
         require("nvim-treesitter.configs").setup({
             textobjects = {

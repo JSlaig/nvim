@@ -13,7 +13,7 @@ return {
                 javascript = { "string", "template_string" },
                 java = false,
             }, 
-            disable_filetype = { "TelescopePrompt", "spectre_panel"},
+            disable_filetype = { "snacks_input", "spectre_panel"},
             fast_wrap = {
                 map = "<M-e>", -- Alt + e
                 chars = { "{", "[", "(", '"', "'" },

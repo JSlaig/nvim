@@ -15,6 +15,7 @@ return {
                 "selene",
                 "jsonlint",
             },
+            ignore_install = { "eslint_project", "stylelint" },
         })
 
         lint.linters_by_ft = {

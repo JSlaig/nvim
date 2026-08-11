@@ -1,52 +1,28 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "InsertEnter",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        event = "InsertEnter"
-    },
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
         local treesitter = require("nvim-treesitter.configs")
 
         treesitter.setup({
             highlight = {
                 enable = true,
-                disable = { "vimdoc" },
+                disable = function(lang, buf)
+                    -- Disable for vimdoc
+                    if lang == "vimdoc" then return true end
+                    -- Disable for large files
+                    local max_filesize = 100 * 1024 -- 100 KB
+                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+                    if ok and stats and stats.size > max_filesize then
+                        return true
+                    end
+                end,
             },
             indent = {
                 enable = true,
+                disable = { "vue" },
             },
-            ensure_installed = {
-                "json",
-                "javascript",
-                "typescript",
-                "java",
-                "yaml",
-                "html",
-                "css",
-                "markdown",
-                "markdown_inline",
-                "bash", 
-                "vue",
-                "lua",
-                "vim",
-                "dockerfile",
-                "gitignore",
-                "python",
-                "regex",
-                "vimdoc",
-                "c"
-            },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-s>",
-                    node_incremental = "<C-s>",
-                    scope_incremental = false,
-                    node_decremental = "<bs>",
-                }
-            }
         })
     end,
 }

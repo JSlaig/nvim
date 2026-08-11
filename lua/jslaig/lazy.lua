@@ -14,8 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { import = "jslaig.plugins.dashboard" }, -- Force loading of the dashboard to make sure it is not delayed
-    { import = "jslaig.plugins.appearance" }, -- Plugins that manage dialogs, colors, etc
+    { import = "jslaig.plugins.appearance" }, -- Plugins that manage dialogs, colors, dashboard, etc
     { import = "jslaig.plugins.navigation" }, -- Plugins to ease navigation in and between files
     { import = "jslaig.plugins.tools" }, -- Additional tools
     { import = "jslaig.plugins.ide" }, -- Syntax and workspace aware plugins for references, linting, syntax highlighting, etc
