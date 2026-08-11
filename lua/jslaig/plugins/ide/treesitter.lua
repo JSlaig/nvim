@@ -20,6 +20,7 @@ return {
             ensure_installed = {
                 "json",
                 "javascript",
+                "typescript",
                 "java",
                 "yaml",
                 "html",
@@ -27,6 +28,7 @@ return {
                 "markdown",
                 "markdown_inline",
                 "bash", 
+                "vue",
                 "lua",
                 "vim",
                 "dockerfile",
