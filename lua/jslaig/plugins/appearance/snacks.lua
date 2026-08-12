@@ -33,8 +33,8 @@ return {
                                                                                                            
 ]],
                 keys = {
-                    { icon = "󰉋 ", key = "f", desc = "Find Files", action = ":Seeker files" },
-                    { icon = "󰍉 ", key = "g", desc = "Grep Files", action = ":Seeker grep" },
+                    { icon = "󰉋 ", key = "f", desc = "Find Files", action = ":lua Snacks.picker.files()" },
+                    { icon = "󰍉 ", key = "g", desc = "Grep Files", action = ":lua Snacks.picker.grep()" },
                     { icon = "󰣇 ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
                     { icon = "󰢱 ", key = "p", desc = "Plugins", action = ":Lazy" },
                     { icon = "󰆧 ", key = "m", desc = "Mason", action = ":Mason" },
@@ -64,6 +64,9 @@ return {
         words = { enabled = false },
     },
     keys = {
+        { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+        { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep Files" },
+        { "<leader>fc", function() Snacks.picker.grep_word() end, desc = "Grep Word" },
         { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
         { "<leader>fo", function() Snacks.picker.recent() end, desc = "Recent Files" },
     },
@@ -73,7 +76,7 @@ return {
             return Snacks.input(opts, on_confirm)
         end
         vim.ui.select = function(items, opts, on_choice)
-            return Snacks.select(items, opts, on_choice)
+            return Snacks.picker.select(items, opts, on_choice)
         end
 
         -- Preload picker module after UI is ready to avoid first-use delay
