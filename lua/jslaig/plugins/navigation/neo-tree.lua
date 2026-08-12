@@ -9,9 +9,9 @@ return {
   cmd = "Neotree",
   keys = {
     {
-      "<leader>mt",
+      "<leader>n",
       function()
-        require("neo-tree.command").execute({ action = "toggle", source = "filesystem" })
+        require("neo-tree.command").execute({ action = "focus", source = "filesystem", toggle = true })
       end,
       desc = "Toggle Neo-tree (filesystem)",
     },
@@ -31,6 +31,11 @@ return {
         window = {
           position = "left",
           width = 32,
+          mappings = {
+            -- mini.files-style navigation
+            l = "open", -- open file or expand folder
+            h = "close_node", -- collapse folder / go up
+          },
         },
       },
       git = {
