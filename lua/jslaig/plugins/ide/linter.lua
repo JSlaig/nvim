@@ -30,7 +30,6 @@ return {
             html = { "eslint_project" },
             json = { "jsonlint" },
 
-            lua = { "selene" },
         }
 
         lint.linters.eslint_project = {
