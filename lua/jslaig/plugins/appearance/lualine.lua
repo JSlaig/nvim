@@ -4,7 +4,6 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
 
     config = function()
-        vim.defer_fn(function()
             local modified = {
                 function()
                     return vim.bo.modified and "  UNSAVED  " or ""
@@ -20,6 +19,9 @@ return {
                 options = {
                     icons_enabled = true,
                     theme = "auto",
+
+                    globalstatus = false,
+
                     component_separators = "❖",
                     section_separators = { left = "", right = "" },
                 },
@@ -38,6 +40,7 @@ return {
                         "encoding",
                         "fileformat",
                         "filetype",
+                    "showcmd"
                     },
 
                     lualine_y = { "progress" },
@@ -60,6 +63,5 @@ return {
                     lualine_z = {},
                 },
             })
-        end, 0)
     end,
 }
